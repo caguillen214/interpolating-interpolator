@@ -13,7 +13,7 @@ iEye.getAllParts = function(text, startSym, endSym) {
   operands.forEach(function(operand) {
     var opParts =  operand.split('.');
     for(var i = 0; i < opParts.length; i++) {
-      var result = iEye.concatParts(opParts,i);
+      var result = iEye.concatParts(`opParts,i);
       if(result && comboParts.indexOf(result) < 0){
         comboParts.push(result);
       }
@@ -29,7 +29,7 @@ iEye.getInterpolation = function(text, startSym, endSym) {
 }
 
 iEye.getOperands = function(str) {
-  return str.split(/[^a-zA-Z_.]/).filter(function(x){return x;});
+  return str.match(/([a-zA-Z_.]+(\[.+])*)/g);
 }
 
 iEye.checkExsistance = function(base, next, parts, i, result) {
