@@ -5,17 +5,17 @@
     <title>DeeD Library</title>
 
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="ieye-lib/ieye-lib.js"></script>
     <script src="decorator.js"></script>
+    <script src="ieye-controller.js"></script>
 
   </head>
   <body>
     <div class="container">
-        <div id='toFill'>
+      <div ng-view>
 
-        </div>
-        <div ng-view>
-        </div>
+      </div>
     </div>
   </body>
 </html>
