@@ -1,9 +1,5 @@
-var car = {
-  details : {brand:'toyota'},
-  wheels: function(num){return num}
-}
-iEye = {
-  car:car
+var iEye = {
+
 }
 
 iEye.getAllParts = function(text, startSym, endSym) {
