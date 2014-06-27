@@ -1,12 +1,27 @@
 angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
   .config(['$provide', '$routeProvider', function($provide, $routeProvider) {
+    var ngHintInterpMessages = [];
     $routeProvider.when('/', {
         controller: 'iEyeController',
         controllerAs: 'iCtrl',
         templateUrl: 'components/iEyeDemo.html'
       }).
       otherwise({redirectTo: '/'});
-    $provide.decorator('$interpolate', ['$delegate', function($delegate) {
+    $provide.decorator('$interpolate', ['$delegate', '$timeout', function($delegate, $timeout) {
+      var currentPromises;
+      var delayDisplay = function(messages) {
+        $timeout.cancel(currentPromises);
+        currentPromises = $timeout(function() {
+          displayMessages(messages);
+        }.bind(this),250)
+      }
+      var displayMessages = function(messages){
+        console.groupCollapsed('Angular Hint: Interpolations');
+        messages.forEach(function(error) {
+          console.warn(error);
+        })
+        console.groupEnd();
+      }
       var interpolateWrapper = function() {
         var interpolationFn = $delegate.apply(this, arguments);
         if(interpolationFn) {
@@ -23,15 +38,16 @@ angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
           var original = interpolationArgs[0];
           var args = arguments[0];
           var found = false;
-          var messages = [], message;
+          var message;
           allParts.forEach(function(part) {
             if(!args.$eval(part) && !found){
               found = true;
               message = part+' was found to be undefined in "'+original.trim()+'".';
             }
           })
-          if(messages.indexOf(message) < 0) {
-            messages.push(message);
+          if(message && ngHintInterpMessages.indexOf(message) < 0) {
+            ngHintInterpMessages.push(message);
+            delayDisplay(ngHintInterpMessages);
           }
           return result;
         };
