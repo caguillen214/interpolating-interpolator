@@ -9,7 +9,7 @@ iEye.getAllParts = function(text, startSym, endSym) {
   operands.forEach(function(operand) {
     var opParts =  operand.split('.');
     for(var i = 0; i < opParts.length; i++) {
-      var result = iEye.concatParts(`opParts,i);
+      var result = iEye.concatParts(opParts,i);
       if(result && comboParts.indexOf(result) < 0){
         comboParts.push(result);
       }
@@ -46,8 +46,4 @@ iEye.concatParts = function(parts,concatLength) {
     total+=period+parts[i];
   }
   return total;
-}
-
-iEye.displayResults = function(result, interpolation) {
-  console.log(result+ ' was found to be undefined in '+interpolation);
 }

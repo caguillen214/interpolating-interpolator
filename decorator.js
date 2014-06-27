@@ -3,7 +3,7 @@ angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
     $routeProvider.when('/', {
         controller: 'iEyeController',
         controllerAs: 'iCtrl',
-        templateUrl: 'iEyeDemo.html'
+        templateUrl: 'components/iEyeDemo.html'
       }).
       otherwise({redirectTo: '/'});
     $provide.decorator('$interpolate', ['$delegate', function($delegate) {
@@ -23,12 +23,16 @@ angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
           var original = interpolationArgs[0];
           var args = arguments[0];
           var found = false;
+          var messages = [], message;
           allParts.forEach(function(part) {
             if(!args.$eval(part) && !found){
               found = true;
-              console.warn(part+' was found to be undefined in "'+original.trim()+'".');
+              message = part+' was found to be undefined in "'+original.trim()+'".';
             }
           })
+          if(messages.indexOf(message) < 0) {
+            messages.push(message);
+          }
           return result;
         };
       }
