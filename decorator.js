@@ -1,4 +1,4 @@
-angular.module('iEyeLib', ['testModule', 'ngRoute'])
+angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
   .config(['$provide', '$routeProvider', function($provide, $routeProvider) {
     $routeProvider.when('/', {
         controller: 'iEyeController',
