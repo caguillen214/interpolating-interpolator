@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "homepage": "https://github.com/caguillen214/interpolating-interpolator",
   "authors": [
-    "Carlo s A. Guillen <caguillen@google.com>"
+    "Carlos A. Guillen <caguillen@google.com>"
   ],
   "description": "interpolation wizardy magic",
   "main": "decorator.js",
@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "angular": "~1.2.18",
-    "angular-route": "~1.2.18"
+    "angular-route": "~1.2.18",
+    "karma": "~0.2.2",
+    "angular-mocks": "~1.2.18"
   }
 }
