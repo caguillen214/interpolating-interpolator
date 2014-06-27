@@ -6,6 +6,7 @@ angular.module('testModule', [])
         fill: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel!',
         somethingElse: {a:'a'},
         ray: [1,2,3]
-      }
+      },
+      ray: [{a:'a',b:'b'},'banana','cashew']
     }
   }]);

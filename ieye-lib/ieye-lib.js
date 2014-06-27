@@ -6,6 +6,7 @@ iEye.getAllParts = function(text, startSym, endSym) {
   var comboParts = [];
   var interpolation = iEye.getInterpolation(text, startSym, endSym);
   var operands = iEye.getOperands(interpolation);
+  console.log(operands)
   operands.forEach(function(operand) {
     var opParts =  operand.split('.');
     for(var i = 0; i < opParts.length; i++) {
@@ -25,7 +26,8 @@ iEye.getInterpolation = function(text, startSym, endSym) {
 }
 
 iEye.getOperands = function(str) {
-  return str.match(/([a-zA-Z_.]+(\[.+])*)/g);
+  //str.match(/([a-zA-Z_.]+(\[.+])*)/g);
+  return str.split(/[\+\-\/\|\<\>\^=&!%~]/g);
 }
 
 iEye.checkExsistance = function(base, next, parts, i, result) {
