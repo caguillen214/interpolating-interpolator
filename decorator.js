@@ -45,7 +45,7 @@ angular.module('ngHintInterpolations', ['testModule', 'ngRoute'])
             allParts.forEach(function(part) {
               if(!args.$eval(part) && !found){
                 found = true;
-                message = part+' was found to be undefined in "'+original.trim()+'".';
+                message = '"'+part+'" was found to be undefined in "'+original.trim()+'".';
               }
             })
             if(message && ngHintInterpMessages.indexOf(message) < 0) {
