@@ -30,17 +30,6 @@ iEye.getOperands = function(str) {
   return str.split(/[\+\-\/\|\<\>\^=&!%~]/g);
 }
 
-iEye.checkExsistance = function(base, next, parts, i, result) {
-  base = base[next];
-  if(!base) {
-    return iEye.concatParts(parts, i);
-  }
-  if(i != parts.length-1 && base) {
-    result = iEye.checkExsistance(base,parts[++i], parts, i, result);
-  }
-  return result;
-}
-
 iEye.concatParts = function(parts,concatLength) {
   var total = '';
   for(var i = 0; i <= concatLength; i++) {
