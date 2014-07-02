@@ -1,4 +1,4 @@
-Angular Hint Interpolations [![Build Status](https://travis-ci.org/caguillen214/interpolating-interpolator.svg)](https://travis-ci.org/caguillen214/interpolating-interpolator)
+Angular Hint Interpolation [![Build Status](https://travis-ci.org/angular/angular-hint-interpolation.svg?branch=master)](https://travis-ci.org/angular/angular-hint-interpolation)
 ==================
 
 Identifies undefined variable parts in interpolated expressions.
