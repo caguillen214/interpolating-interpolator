@@ -1,5 +1,5 @@
 {
-  "name": "angular-hint-interpolations",
+  "name": "angular-hint-interpolation",
   "version": "0.0.0",
   "description": "Identifies undefined variable parts in interpolated expressions.",
   "main": "decorator.js",
