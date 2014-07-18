@@ -18,6 +18,8 @@ angular.module('testModule')
         ray: [1,2,3],
       },
       helloName: function(name){ return 'hello, '+name;},
-      ray: [{a:'a',b:'b'},'banana','cashew']
+      ray: [{a:'a',b:'b'},'banana','cashew'],
+      imgSsc : 'hi',
+      faker : 'LoL',
     };
   }]);

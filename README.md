@@ -1,9 +1,11 @@
-Angular Hint: Interpolation [![Build Status](https://travis-ci.org/angular/angular-hint-interpolation.svg)](https://travis-ci.org/angular/angular-hint-interpolation)
-==================
+Angular Hint: Interpolation [![Build Status](https://travis-ci.org/caguillen214/interpolating-interpolator.svg)](https://travis-ci.org/caguillen214/interpolating-interpolator)[![Code Climate](https://codeclimate.com/github/angular/angular-hint-interpolation.png)](https://codeclimate.com/github/angular/angular-hint-interpolation)
+=========
 
-Angular Hint Interpolation lets you spend less time finding silent errors in your code and more time on actually programming. This tool is a subset of many under the [Angular Hint](https://github.com/angular/angular-hint) repository that specializes in identifying errors relating to interpolations. For instructions on how to incorporate the whole Angular Hint repository into your project, please refer to the link above.
+Angular Hint Directives lets you spend less time finding silent errors in your code and more time programming. This tool is a subset of many under the [Angular Hint](https://github.com/angular/angular-hint) repository that specializes in identifying errors relating to directives. For instructions on how to incorporate the whole Angular Hint repository into your project, please refer to the link above.
 
-Angular Hint Interpolation notifies you of any interpolation that evaluates to undefined. In the code below, if the interpolation in the source of the image was undefined, we would would end up with `"imgs/users/.png"`. With Hint Interpolation one would immediately know that the interpolation was undefined and wouldn't have to wonder as to why their image wasn't displaying.
+#### Angular Hint Directive:
+  - [Notifies of undefined parts of interpolation chains](#undefined-parts-warning)
+  - [Suggests closest variable to the first undefined variable in chain](#variable-suggestion)
 
 ```html
 <img ng-src="imgs/users/{{user.name}}.png"/>
