@@ -1,60 +1,34 @@
+(function (iiLib) {
 'use strict';
-var iiLib = {
-  currentPromises: {}
-};
 
-iiLib.getAllParts = function(text, startSym, endSym) {
-  if(text.indexOf(startSym) < 0 || text.indexOf(endSym) < 0) {
-    throw new Error('Missing start or end symbol in interpolation. Start symbol: "'+startSym+
-      '" End symbol: "'+endSym+'"');
-  }
-  var comboParts = [];
-  var interpolation = iiLib.getInterpolation(text, startSym, endSym);
-  var operands = iiLib.getOperands(interpolation);
-  operands.forEach(function(operand) {
-    var opParts =  operand.split('.');
-    for(var i = 0; i < opParts.length; i++) {
-      var result = iiLib.concatParts(opParts,i);
-      if(result && comboParts.indexOf(result) < 0 && isNaN(+result)){
-        comboParts.push(result);
-      }
-    }
-  });
-  return comboParts;
-};
+var hintLog = require('angular-hint-log');
+hintLog.moduleName = 'Interpolation';
+hintLog.moduleDescription = '';
+iiLib.errorNumber = 0;
+iiLib.currentPromises = {};
+iiLib.ngHintInterpMessages = [];
 
-iiLib.getInterpolation = function(text, startSym, endSym) {
-  var startInd = text.indexOf(startSym) + startSym.length;
-  var endInd = text.indexOf(endSym);
-  return text.substring(startInd, endInd);
-};
+iiLib.getAllParts = require('../lib/getAllParts');
 
-iiLib.getOperands = function(str) {
-  return str.split(/[\+\-\/\|<\>\^=&!%~]/g);
-};
+iiLib.getInterpolation = require('../lib/getInterpolation');
 
-iiLib.concatParts = function(parts,concatLength) {
-  var total = '';
-  for(var i = 0; i <= concatLength; i++) {
-    var period = (i===0) ? '' : '.';
-    total+=period+parts[i].trim();
-  }
-  return total;
-};
+iiLib.getOperands = require('../lib/getOperands');
 
-iiLib.delayDisplay = function(messages, $timeout) {
-  $timeout.cancel(iiLib.currentPromises);
-  iiLib.currentPromises = $timeout(function() {
-    iiLib.displayMessages(messages);
-  }.bind(this),250);
-};
+iiLib.concatParts = require('../lib/concatParts');
 
-iiLib.displayMessages = function(messages){
-  console.groupCollapsed('Angular Hint: Interpolation');
-  for(var i = 0; i < messages.length; i+=2) {
-    console.groupCollapsed(messages[i]);
-    console.warn(messages[i+1]);
-    console.groupEnd();
-  }
-  console.groupEnd();
-};
+iiLib.delayDisplay = require('../lib/delayDisplay');
+
+iiLib.displayMessages = require('../lib/displayMessages');
+
+iiLib.partsEvaluate = require('../lib/partsEvaluate');
+
+iiLib.buildMessage = require('../lib/buildMessage');
+
+iiLib.getSuggestion = require('../lib/getSuggestion');
+
+iiLib.areSimilarEnough = require('../lib/areSimilarEnough');
+
+iiLib.levenshtein = require('../lib/levenshtein');
+
+}((typeof module !== 'undefined' && module && module.exports) ?
+      (module.exports = window.iiLib = {}) : (window.iiLib = {}) ));

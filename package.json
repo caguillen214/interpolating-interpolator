@@ -11,7 +11,8 @@
     "karma-jasmine": "^0.1.5"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --browsers Firefox --single-run"
+    "test": "./node_modules/karma/bin/karma start --browsers Firefox --single-run",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
