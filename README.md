@@ -3,7 +3,7 @@ Angular Hint: Interpolation [![Build Status](https://travis-ci.org/caguillen214/
 
 Angular Hint Directives lets you spend less time finding silent errors in your code and more time programming. This tool is a subset of many under the [Angular Hint](https://github.com/angular/angular-hint) repository that specializes in identifying errors relating to directives. For instructions on how to incorporate the whole Angular Hint repository into your project, please refer to the link above.
 
-#### Angular Hint Directive:
+#### Angular Hint Interpolation:
   - [Notifies of undefined parts of interpolation chains](#undefined-parts-warning)
   - [Suggests closest variable to the first undefined variable in chain](#variable-suggestion)
 
