@@ -7,40 +7,36 @@ Angular Hint Directives lets you spend less time finding silent errors in your c
   - [Notifies of undefined parts of interpolation chains](#undefined-parts-warning)
   - [Suggests closest variable to the first undefined variable in chain](#variable-suggestion)
 
+
+#### Undefined Parts Warning
+ Hint Interpolation addresses the problem of identifying where (withinin a chain) objects become undefined. For example, in the HTML code below (given the controller implementation further below) one would be notified that `data.results[0].urls` was found to be `undefined` in the interpolation `data.results[0].entities.urls.main_url`.
+
 ```html
-<img ng-src="imgs/users/{{user.name}}.png"/>
+<a ng-href="{{data.results[0].urls.main_url}}">Link to Post</a>
+```
+#### Variable Suggestion
+ If your value that evaluates to `undefined` is close enough to the actual value, Hint Interpolation will suggest an alternative value. Using the HTML code below, you would be notified that `data.results[0].entity` was undefined but that you should try `entities`.
+```html
+<a ng-href="{{data.results[0].entity.urls.main_url}}">Link to Post</a>
 ```
 
-Additionally, Hint Interpolation addresses the problem of identifying where in chain the object becomes undefined when evaluating values deep within nested object. For example, imagine the scenario below where you have a chain of values from an api and you need to get to the url of a tweet. If any of the values in the chain do not exsist because of a typo, index out of bounds, etc. you would get an empty string returned and you wouldn't know where your code went awry. Hint Interpolation would notify you that `data.results[0].url` was found to be `undefined` in the interpolation `data.results[0].url[0].url`.
-```html
-<a ng-href="{{data.results[0].url[0].url}}">Link to Tweet</a>
-```
-
+##### Example Controller Implementation:
 ```javascript
 // in a controller...
 $scope.data = {
   "completed_in": 0.031,
-  "refresh_url": "?since_id=122078461840982016&q=blue%20angels",
+  "refresh_url": "?sinceid=122078461840982016&q=blue%20angels",
   "results": [
     {
       "entities":{
-        "urls":[
-          {
-            "url": "http://t.co/L9JXJ2ee",
-            "expanded_url": "http://bit.ly/q9fyz9",
-            "display_url": "bit.ly/q9fyz9",
-            "indices": [
-              37,
-              57
-            ]
-          }
-        ]
+        "urls": {
+          "condensed_url": "http://t.co/L9JXJ2ee",
+          "main_url": "http://t.co/imgs/users/venrov/L9JXJ2ee"
+        }
       }
     }]
 }
 ```
-
-----
 
 ## [License](LICENSE)
 
