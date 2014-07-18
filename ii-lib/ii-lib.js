@@ -1,6 +1,12 @@
 'use strict';
+
+var hintLog = require('angular-hint-log');
+hintLog.moduleName = 'Directives';
+hintLog.moduleDescription = '';
+
 var iiLib = {
-  currentPromises: {};
+  currentPromises: {},
+  errorNumber: 0
 };
 
 iiLib.getAllParts = function(text, startSym, endSym) {
@@ -19,34 +25,42 @@ iiLib.getAllParts = function(text, startSym, endSym) {
         comboParts.push(result);
       }
     }
-  })
+  });
   return comboParts;
-}
+};
 
 iiLib.getInterpolation = function(text, startSym, endSym) {
   var startInd = text.indexOf(startSym) + startSym.length;
   var endInd = text.indexOf(endSym);
   return text.substring(startInd, endInd);
-}
+};
 
 iiLib.getOperands = function(str) {
-  return str.split(/[\+\-\/\|\<\>\^=&!%~]/g);
-}
+  return str.split(/[\+\-\/\|<\>\^=&!%~]/g);
+};
 
-iiLib.concatParts = function(parts,concatLength) {
+iiLib.concatParts = function(parts, concatLength) {
   var total = '';
   for(var i = 0; i <= concatLength; i++) {
-    var period = (i==0)?'':'.';
+    var period = (i===0) ? '' : '.';
     total+=period+parts[i].trim();
   }
   return total;
-}
-iiLib.delayDisplay = function(messages) {
+};
+iiLib.delayDisplay = function(messages, $timeout) {
   $timeout.cancel(iiLib.currentPromises);
   iiLib.currentPromises = $timeout(function() {
     iiLib.displayMessages(messages);
-  }.bind(this),250)
-}
+  }.bind(this),250);
+};
+
+iiLib.displayMessages1 = function(messages) {
+  for(var i = 0; i < messages.length; i+=2) {
+    hintLog.createErrorMessage(messages[i], iiLib.errorNumber = ++iiLib.errorNumber, messages[i+1]);
+  }
+};
+
+
 iiLib.displayMessages = function(messages){
   console.groupCollapsed('Angular Hint: Interpolation');
   for(var i = 0; i < messages.length; i+=2) {
@@ -55,4 +69,15 @@ iiLib.displayMessages = function(messages){
     console.groupEnd();
   }
   console.groupEnd();
-}
+};
+
+
+
+
+
+
+
+
+
+
+

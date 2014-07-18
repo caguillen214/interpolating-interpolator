@@ -2,7 +2,7 @@
   "name": "angular-hint-interpolation",
   "version": "0.0.0",
   "description": "Identifies undefined variable parts in interpolated expressions.",
-  "main": "decorator.js",
+  "main": "hint-interpolation.js",
   "devDependencies": {
     "karma": "0.12.16",
     "karma-chrome-launcher": "^0.1.4",
@@ -22,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/caguillen214/interpolating-interpolator/issues"
   },
-  "homepage": "https://github.com/caguillen214/interpolating-interpolator"
+  "homepage": "https://github.com/caguillen214/interpolating-interpolator",
+  "dependencies": {
+    "angular-hint-log": "git://github.com/angular/angular-hint-log",
+    "browserify": "^4.2.0",
+    "camelize": "^1.0.0",
+    "gulp": "^3.8.6",
+    "karma-bro": "^0.6.0",
+    "karma-coverage": "^0.2.4",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^0.10.2"
+  }
 }

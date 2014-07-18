@@ -17,9 +17,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'decorator_test.js',
-      'decorator.js',
-      'ii-lib/*.js'
+      'dist/hint-interpolation.js'
     ],
 
 
