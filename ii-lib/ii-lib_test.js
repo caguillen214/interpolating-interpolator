@@ -1,6 +1,6 @@
 describe('ieye-lib', function() {
   describe('getAllParts()', function() {
-    //E.g. the parts in "hello, {{data.user[1].name}}" are data, data.user[1],data.user[1].name
+    //E.g. the parts in "hello, {{data.user[1].name}}" are data, data.user[1], &  data.user[1].name
     it('should return an array with all parts of the interpolation', function() {
       var toSend = 'Hello, {{data.firstName + data.lastName}}';
       var parts = iEye.getAllParts(toSend, '{{','}}');

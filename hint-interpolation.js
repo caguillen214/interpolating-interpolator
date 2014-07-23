@@ -1,5 +1,8 @@
 'use strict';
-var iiLib = require('./ii-lib/ii-lib');
+
+var getAllParts = require('./lib/getAllParts');
+var buildMessage = require('./lib/buildMessage');
+
 
 angular.module('ngHintInterpolation', [])
   .config(['$provide', function($provide) {
@@ -8,7 +11,7 @@ angular.module('ngHintInterpolation', [])
       var interpolateWrapper = function() {
         var interpolationFn = $delegate.apply(this, arguments);
         if(interpolationFn) {
-          var parts = iiLib.getAllParts(arguments[0],$delegate.startSymbol(),$delegate.endSymbol());
+          var parts = getAllParts(arguments[0],$delegate.startSymbol(),$delegate.endSymbol());
           var temp = interpolationFnWrap(interpolationFn,arguments, parts);
           return temp;
         }
@@ -16,7 +19,7 @@ angular.module('ngHintInterpolation', [])
       var interpolationFnWrap = function(interpolationFn, interpolationArgs, allParts) {
         return function(){
           var result = interpolationFn.apply(this, arguments);
-          iiLib.buildMessage(allParts, interpolationArgs[0].trim(), arguments[0], $timeout);
+          buildMessage(allParts, interpolationArgs[0].trim(), arguments[0], $timeout);
           return result;
         };
       };

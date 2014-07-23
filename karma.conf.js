@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'test/*_test.js'
       'hint-interpolation.js'
     ],
 
@@ -29,7 +30,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'hint-interpolation.js': ['browserify'],
-      'ii-lib/ii-lib_test.js': ['browserify']
+      'test/*_test.js': ['browserify']
     },
 
 
