@@ -4,7 +4,6 @@
 var getAllParts = require('./lib/getAllParts');
 var buildMessage = require('./lib/buildMessage');
 
-
 angular.module('ngHintInterpolation', [])
   .config(['$provide', function($provide) {
     var ngHintInterpMessages = [];
@@ -126,6 +125,7 @@ module.exports = function (part, scope) {
   }
   return closestMatch;
 };
+
 },{"./areSimilarEnough":2,"./levenshtein":10}],10:[function(require,module,exports){
 module.exports = function(s, t) {
   if(typeof s !== 'string' || typeof t !== 'string') {

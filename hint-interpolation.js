@@ -3,7 +3,6 @@
 var getAllParts = require('./lib/getAllParts');
 var buildMessage = require('./lib/buildMessage');
 
-
 angular.module('ngHintInterpolation', [])
   .config(['$provide', function($provide) {
     var ngHintInterpMessages = [];
