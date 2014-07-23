@@ -1,4 +1,4 @@
-Angular Hint: Interpolation [![Build Status](https://travis-ci.org/caguillen214/interpolating-interpolator.svg)](https://travis-ci.org/caguillen214/interpolating-interpolator)[![Code Climate](https://codeclimate.com/github/angular/angular-hint-interpolation.png)](https://codeclimate.com/github/angular/angular-hint-interpolation)
+Angular Hint: Interpolation [![Build Status](https://travis-ci.org/angular/angular-hint-interpolation.svg)](https://travis-ci.org/angular/angular-hint-interpolation)[![Code Climate](https://codeclimate.com/github/angular/angular-hint-interpolation.png)](https://codeclimate.com/github/angular/angular-hint-interpolation)
 =========
 
 Angular Hint Directives lets you spend less time finding silent errors in your code and more time programming. This tool is a subset of many under the [Angular Hint](https://github.com/angular/angular-hint) repository that specializes in identifying errors relating to directives. For instructions on how to incorporate the whole Angular Hint repository into your project, please refer to the link above.

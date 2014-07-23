@@ -28,7 +28,7 @@ angular.module('ngHintInterpolation', [])
     }]);
   }]);
 
-},{"./lib/buildMessage":3,"./lib/getAllParts":6}],2:[function(require,module,exports){
+},{"./lib/buildMessage":3,"./lib/getAllParts":5}],2:[function(require,module,exports){
 module.exports = function(s,t) {
   var strMap = {}, similarities = 0, STRICTNESS = 0.66;
   if(Math.abs(s.length-t.length) > 3) {
@@ -45,7 +45,6 @@ module.exports = function(s,t) {
 var hintLog = require('angular-hint-log');
 
 var partsEvaluate = require('./partsEvaluate');
-var delayDisplay = require('./delayDisplay');
 
 module.exports = function(allParts, originalInterpolation, scope, $timeout) {
   var message = partsEvaluate(allParts, originalInterpolation, scope);
@@ -54,7 +53,7 @@ module.exports = function(allParts, originalInterpolation, scope, $timeout) {
   }
 };
 
-},{"./delayDisplay":5,"./partsEvaluate":11,"angular-hint-log":12}],4:[function(require,module,exports){
+},{"./partsEvaluate":10,"angular-hint-log":11}],4:[function(require,module,exports){
 module.exports = function(parts, concatLength) {
   var total = '';
   for(var i = 0; i <= concatLength; i++) {
@@ -65,15 +64,6 @@ module.exports = function(parts, concatLength) {
 };
 
 },{}],5:[function(require,module,exports){
-/*NOT USED*/
-module.exports = function(messages, $timeout) {
-  $timeout.cancel(iiLib.currentPromises);
-  iiLib.currentPromises = $timeout(function() {
-    iiLib.displayMessages(messages);
-  }.bind(this),250);
-};
-
-},{}],6:[function(require,module,exports){
 var getInterpolation = require('./getInterpolation');
 var getOperands = require('./getOperands');
 var concatParts = require('./concatParts');
@@ -98,19 +88,19 @@ module.exports = function(text, startSym, endSym) {
   return comboParts;
 };
 
-},{"./concatParts":4,"./getInterpolation":7,"./getOperands":8}],7:[function(require,module,exports){
+},{"./concatParts":4,"./getInterpolation":6,"./getOperands":7}],6:[function(require,module,exports){
 module.exports = function(text, startSym, endSym) {
   var startInd = text.indexOf(startSym) + startSym.length;
   var endInd = text.indexOf(endSym);
   return text.substring(startInd, endInd);
 };
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = function(str) {
   return str.split(/[\+\-\/\|<\>\^=&!%~]/g);
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var areSimilarEnough = require('./areSimilarEnough');
 var levenshtein = require('./levenshtein');
 
@@ -126,7 +116,7 @@ module.exports = function (part, scope) {
   return closestMatch;
 };
 
-},{"./areSimilarEnough":2,"./levenshtein":10}],10:[function(require,module,exports){
+},{"./areSimilarEnough":2,"./levenshtein":9}],9:[function(require,module,exports){
 module.exports = function(s, t) {
   if(typeof s !== 'string' || typeof t !== 'string') {
     throw new Error('Function must be passed two strings, given: '+typeof s+' and '+typeof t+'.');
@@ -162,7 +152,7 @@ module.exports = function(s, t) {
   return d[n][m];
 };
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var getSuggestion = require('./getSuggestion');
 
 module.exports = function(allParts, originalInterpolation, scope) {
@@ -180,7 +170,7 @@ module.exports = function(allParts, originalInterpolation, scope) {
   return message;
 };
 
-},{"./getSuggestion":9}],12:[function(require,module,exports){
+},{"./getSuggestion":8}],11:[function(require,module,exports){
 var queuedMessages = [];
 function logMessage(message) {
   queuedMessages.push(message);
