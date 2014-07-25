@@ -1,7 +1,7 @@
 {
   "name": "angular-hint-interpolation",
   "version": "0.0.0",
-  "description": "Identifies undefined variable parts in interpolated expressions.",
+  "description": "An Angular Hint Module for identifying issues related to Interpolations.",
   "main": "hint-interpolation.js",
   "devDependencies": {
     "karma": "0.12.16",
