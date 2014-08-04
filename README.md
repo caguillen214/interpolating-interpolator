@@ -38,6 +38,10 @@ $scope.data = {
 }
 ```
 
+##Contributing
+
+Want to improve AngularHintInterpolation or other facets of AngularHint? We'd love to get your help! See the [Contributing Guidelines](https://github.com/angular/angular-hint/blob/master/CONTRIBUTING.md).
+
 ## [License](LICENSE)
 
 Copyright 2014 Google, Inc. http://angularjs.org
