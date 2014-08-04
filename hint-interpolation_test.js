@@ -17,7 +17,7 @@ describe('hintInterpolation integration test', function() {
     var html = '<a ng-href="{{data.results[0].urls.main_url}}"></a>';
     $compile(html)($rootScope);
     var log = hintLog.flush();
-    expect(Object.keys(log['Interpolation'])).toEqual([' "data" was found to be undefined in ' +
+    expect(log['Interpolation']['Error Messages']).toEqual(['"data" was found to be undefined in ' +
       '"{{data.results[0].urls.main_url}}".']);
   });
 
@@ -32,7 +32,7 @@ describe('hintInterpolation integration test', function() {
     });
     $compile(html)(scope);
     var log = hintLog.flush();
-    expect(Object.keys(log['Interpolation'])).toEqual([' "data" was found to be undefined in ' +
+    expect(log['Interpolation']['Error Messages']).toEqual(['"data" was found to be undefined in ' +
       '"{{data.results[0].urls.main_url}}". Try: "datas"']);
   });
 });
