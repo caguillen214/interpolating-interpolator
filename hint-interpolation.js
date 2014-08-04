@@ -5,7 +5,6 @@ var buildMessage = require('./lib/buildMessage');
 
 angular.module('ngHintInterpolation', [])
   .config(['$provide', function($provide) {
-    var ngHintInterpMessages = [];
     $provide.decorator('$interpolate', ['$delegate', '$timeout', function($delegate, $timeout) {
       var interpolateWrapper = function() {
         var interpolationFn = $delegate.apply(this, arguments);
