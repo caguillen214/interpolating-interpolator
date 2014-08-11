@@ -35,4 +35,19 @@ describe('hintInterpolation integration test', function() {
     expect(log['Interpolation']['Error Messages']).toEqual(['"data" was found to be undefined in ' +
       '"{{data.results[0].urls.main_url}}". Try: "datas"']);
   });
+
+
+  it('should not break interpolation if the sequence is too complex', function() {
+    var html = '<a ng-href="{{(header.elevateLoggedIn) ? \'/elevate-frequent-flyer/landing\': \'/elevate-frequent-flyer\'}}"></a>';
+    expect(function() {
+      var scope = $rootScope.$new();
+      var ctrl = $controller(function() {
+        scope.datas = {
+          results: ['something']
+        };
+      });
+      $compile(html)(scope);
+      var log = hintLog.flush();
+    }).not.toThrow();
+  });
 });
