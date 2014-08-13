@@ -12,11 +12,10 @@ describe('getAllParts()', function() {
     expected = ['data','data.age'];
     expect(parts).toEqual(expected);
   });
-  it('should throw if start and end symbol are not found', function() {
+  it('should not throw if start and end symbol are not found', function() {
     var toSend = 'Hello, {{name]]';
     expect(function(){
       getAllParts(toSend, '{{','}}');
-    }).toThrow
-      ('Missing start or end symbol in interpolation. Start symbol: "{{" End symbol: "}}"');
+    }).not.toThrow();
   });
 });

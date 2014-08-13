@@ -37,7 +37,7 @@ describe('hintInterpolation integration test', function() {
   });
 
 
-  it('should not break interpolation if the sequence is too complex', function() {
+  iit('should not break interpolation if the sequence is too complex', function() {
     var html = '<a ng-href="{{(header.elevateLoggedIn) ? \'/elevate-frequent-flyer/landing\': \'/elevate-frequent-flyer\'}}"></a>';
     expect(function() {
       var scope = $rootScope.$new();

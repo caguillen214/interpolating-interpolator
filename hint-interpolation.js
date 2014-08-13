@@ -13,7 +13,7 @@ angular.module('ngHintInterpolation', [])
           if(arguments[0].indexOf('?') === -1 && arguments[0].indexOf(':') === -1) {
             var parts = getAllParts(arguments[0], $delegate.startSymbol(), $delegate.endSymbol());
           }
-          temp = interpolationFnWrap(interpolationFn, arguments, parts);
+          temp = interpolationFnWrap(interpolationFn, arguments, parts || []);
           return temp;
         }
       };
