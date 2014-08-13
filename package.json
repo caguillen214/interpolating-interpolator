@@ -1,6 +1,6 @@
 {
   "name": "angular-hint-interpolation",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "An Angular Hint Module for identifying issues related to Interpolations.",
   "main": "hint-interpolation.js",
   "devDependencies": {
