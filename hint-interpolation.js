@@ -12,10 +12,8 @@ angular.module('ngHintInterpolation', [])
           var temp;
           if(arguments[0].indexOf('?') === -1 && arguments[0].indexOf(':') === -1) {
             var parts = getAllParts(arguments[0], $delegate.startSymbol(), $delegate.endSymbol());
-            temp = interpolationFnWrap(interpolationFn, arguments, parts);
-          } else {
-            temp = interpolationFnWrap(interpolationFn, arguments, []);
           }
+          temp = interpolationFnWrap(interpolationFn, arguments, parts);
           return temp;
         }
       };
