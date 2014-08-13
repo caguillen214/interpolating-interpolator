@@ -36,5 +36,10 @@ describe('getOperands()', function() {
     result = getOperands(toSend, '{{','}}');
     expected = ['variable'];
     expect(result).toEqual(expected);
+
+    toSend = 'thisWouldBeCapitalized | capitalize';
+    result = getOperands(toSend, '{{','}}');
+    expected = ['thisWouldBeCapitalized'];
+    expect(result).toEqual(expected);
   });
 });
